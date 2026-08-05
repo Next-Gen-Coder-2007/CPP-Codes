@@ -128,6 +128,18 @@ class LinkedList {
                 }
             }
         }
+        void Reverse(){
+            Node<T> *x = head;
+            Node<T> *y = nullptr;
+            Node<T> *z = nullptr;
+            while(x != nullptr){
+                z = y;
+                y = x;
+                x = x->next;
+                y->next = z;
+            }
+            head = y;
+        }
         ~LinkedList(){
             Node<T> *temp = head;
             while(temp != nullptr){
@@ -166,6 +178,11 @@ int main(){
     cout << "\nArray Sorted or not ?: " << (ll.isSorted() ? "Yes" : "No") << endl;
 
     ll.RemoveDuplicates();
+    ll.Display();
+
+    cout << endl;
+
+    ll.Reverse();
     ll.Display();
     return 0;
 }
